@@ -1,6 +1,7 @@
 import * as React from "react";
 import { ethers } from "ethers";
 import './App.css';
+import abi from "./utils/WavePortal.json";
 import { useEffect } from "react";
 import { useState } from "react";
 
@@ -35,6 +36,8 @@ const findMetaMaskAccount = async () => {
 export default function App() {
 
   const [currentAccount, setCurrentAccount] = useState("");
+  const contractAddress = "0x19Ef517a1583e6fd14b83306DDC923A948B147D0";
+  const contractABI = abi.abi;
 
   const connectWallet = async () => {
     try {
@@ -63,9 +66,24 @@ export default function App() {
     });
   }, []);
 
-  const wave = () => {
-    
-  }
+  const wave = async () => {
+    try {
+      const { ethereum } = window;
+
+      if (ethereum) {
+        const provider = new ethers.providers.Web3Provider(ethereum);
+        const signer = provider.getSigner();
+        const wavePortalContract = new ethers.Contract(contractAddress, contractABI, signer);
+
+        let count = await wavePortalContract.getTotalWaves();
+        console.log("Retrieved total wave count...", count.toNumber());
+      } else {
+        console.log("Ethereum object doesn't exist!");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+}
   
   return (
     <div className="mainContainer">
