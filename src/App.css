@@ -24,11 +24,24 @@
   margin-top: 16px;
 }
 
+input {
+  margin-top: 16px;
+  padding: 12px;
+}
+
 .waveButton {
   cursor: pointer;
   margin-top: 16px;
   padding: 8px;
   border: 0;
   border-radius: 5px;
-  
+}
+
+.tips {
+  text-align: center;
+  margin-top: 16px;
+}
+
+.tips > span {
+  color: #1a0dab;
 }
