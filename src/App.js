@@ -5,7 +5,7 @@ import abi from "./utils/WavePortal.json";
 import { useEffect } from "react";
 import { useState } from "react";
 
-const contractAddress = "0x2C1E2229868290324B515cb7bfA69bD0BD07a4f0";
+const contractAddress = "0x0BA679a3eB3edFbD99Bf7F3a7394F296759A3810";
 const contractABI = abi.abi;
 
 const checkIfWalletIsConnected = async () => {
@@ -125,15 +125,15 @@ export default function App() {
         },
       ]);
     };
-  
+
     if (window.ethereum) {
       const provider = new ethers.providers.Web3Provider(window.ethereum);
       const signer = provider.getSigner();
-  
+
       wavePortalContract = new ethers.Contract(contractAddress, contractABI, signer);
       wavePortalContract.on("NewWave", onNewWave);
     }
-  
+
     return () => {
       if (wavePortalContract) {
         wavePortalContract.off("NewWave", onNewWave);
@@ -152,7 +152,7 @@ export default function App() {
         <div className="bio">
         You can wave at me on Goerli testnet network!
         </div>
-        
+
         {currentAccount && (
           <input
             type="text"
