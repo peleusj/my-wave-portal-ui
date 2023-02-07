@@ -1,9 +1,8 @@
-import * as React from "react";
+import { useEffect } from "react";
+import { useState } from "react";
 import { ethers } from "ethers";
 import './App.css';
 import abi from "./utils/WavePortal.json";
-import { useEffect } from "react";
-import { useState } from "react";
 
 const contractAddress = "0x0BA679a3eB3edFbD99Bf7F3a7394F296759A3810";
 const contractABI = abi.abi;
