@@ -1,4 +1,4 @@
-## buildspace Wave Portal 👋 
+## buildspace Wave Portal frontend 👋 
 
 ### buildspace project information
 
